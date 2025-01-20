@@ -1,0 +1,57 @@
+# ModernBERT/mkdocs.yml
+
+site_name: ModernBERT Experiemtns
+site_description: Documentation for the pyNetLogo Reversible Pseudonymization System
+site_author: Michael Young
+theme:
+  name: material
+  palette:
+    primary: indigo
+    accent: blue
+  features:
+    - navigation.sections
+    - navigation.top
+nav:
+    - Home: index.md
+    - Overview:
+        - Project Structure: overview/project_structure.md
+        - Core Concepts: overview/core_concepts.md
+    - Components:
+        - Overview: components/overview.md
+        - Configuration: components/config.md
+        - Redis: components/redis.md
+        - Logging: components/logging.md
+        - FastAPI App: components/fastapi.md
+        - Agents:
+          - Agent Base Class: agents/agents_base.md
+          - Agents Manager: agents/agents_manager.md
+          - Anonymization Agent: agents/anonymization_agent.md
+          - Backup Agent: agents/backup_agent.md
+          - E2B Agent: agents/e2b_agent.md
+          - Feedback Processor Agent: agents/feedback_processor.md
+          - FlairNER Agent: agents/flairner_agent.md
+          - Primary Agent: agents/primary_agent.md
+          - Profanity Removal Agent: agents/profanity_removal_agent.md
+          - Realms: agents/realms.md
+          - Run Cell Update: agents/run_cell_update.md
+          - SpaCyNER Agent: agents/spacyner_agent.md
+          - Specialized Agent: agents/specialized_agent.md
+          - Spelling Correction Agent: agents/spellcheck_agent.md
+          - Whitespace Control Agent: agents/whitespace_control_agent.md
+    - Deployment: deployment.md
+    - Extensibility: extensibility.md
+    - MKDocs: mkdocs.md
+    - Gradio: gradio.md
+    - Contributing: contributing.md
+    - License: license.md
+
+markdown_extensions:
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences
+  - admonition
+  - pymdownx.details
+  - pymdownx.tabbed:
+      alternate_style: true
