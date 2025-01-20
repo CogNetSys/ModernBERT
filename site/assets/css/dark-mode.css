@@ -1,0 +1,53 @@
+/* dark-mode.css */
+
+/* Default light mode styles */
+body {
+    background-color: #fff;
+    color: #000;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+/* Dark mode styles */
+body.dark-mode {
+    background-color: #121212;
+    color: #f5f5f5;
+}
+
+/* Toggle button styles */
+.toggle-button {
+    position: fixed;    /* Ensure it stays in place while scrolling */
+    top: 20px;          /* Adjusted for better visibility */
+    right: 20px;        /* Adjusted for better visibility */
+    cursor: pointer;
+    border: 2px solid #333;
+    background-color: #fff;
+    padding: 5px 10px;
+    border-radius: 5px;
+    z-index: 1000;
+    display: inline-block; /* Ensure button is displayed */
+}
+
+.toggle-button .switch {
+    width: 34px;
+    height: 20px;
+    background-color: #ccc;
+    border-radius: 50px;
+    position: relative;
+}
+
+.toggle-button .switch:before {
+    content: "";
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 16px;
+    height: 16px;
+    background-color: #fff;
+    border-radius: 50%;
+    transition: 0.3s;
+}
+
+body.dark-mode .toggle-button .switch:before {
+    left: 16px;
+    background-color: #333;
+}

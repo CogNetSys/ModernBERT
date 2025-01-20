@@ -1,57 +1,85 @@
-# ModernBERT/mkdocs.yml
+site_name: ModernBERT Documentation
+site_author: Michael G Young
+site_description: Comprehensive documentation for ModernBERT, covering introduction, features, architecture, and applications.
 
-site_name: ModernBERT Experiemtns
-site_description: Documentation for the pyNetLogo Reversible Pseudonymization System
-site_author: Michael Young
 theme:
-  name: material
+  name: 'material'
   palette:
-    primary: indigo
-    accent: blue
-  features:
-    - navigation.sections
-    - navigation.top
+    scheme: slate 
+
 nav:
-    - Home: index.md
-    - Overview:
-        - Project Structure: overview/project_structure.md
-        - Core Concepts: overview/core_concepts.md
-    - Components:
-        - Overview: components/overview.md
-        - Configuration: components/config.md
-        - Redis: components/redis.md
-        - Logging: components/logging.md
-        - FastAPI App: components/fastapi.md
-        - Agents:
-          - Agent Base Class: agents/agents_base.md
-          - Agents Manager: agents/agents_manager.md
-          - Anonymization Agent: agents/anonymization_agent.md
-          - Backup Agent: agents/backup_agent.md
-          - E2B Agent: agents/e2b_agent.md
-          - Feedback Processor Agent: agents/feedback_processor.md
-          - FlairNER Agent: agents/flairner_agent.md
-          - Primary Agent: agents/primary_agent.md
-          - Profanity Removal Agent: agents/profanity_removal_agent.md
-          - Realms: agents/realms.md
-          - Run Cell Update: agents/run_cell_update.md
-          - SpaCyNER Agent: agents/spacyner_agent.md
-          - Specialized Agent: agents/specialized_agent.md
-          - Spelling Correction Agent: agents/spellcheck_agent.md
-          - Whitespace Control Agent: agents/whitespace_control_agent.md
-    - Deployment: deployment.md
-    - Extensibility: extensibility.md
-    - MKDocs: mkdocs.md
-    - Gradio: gradio.md
-    - Contributing: contributing.md
-    - License: license.md
+  - Home: index.md
+  - Overview:
+      - Introduction: overview/introduction.md
+      - Features: overview/features.md
+      - Architecture: overview/architecture.md
+      - Applications: overview/applications.md
+      - Resources: overview/learn_more.md
+  - Base Model:
+      - Introduction: base/index.md
+      - Use Case: base/use_case.md
+      - Model Versions: base/model_versions.md
+      - Setting up Google Colab: base/setup.md
+      - Training the Model: base/run.md
+      - Saving Models to Google Drive: base/saving_models.md
+      - Inference and Usage: base/inference.md
+      - Troubleshooting: base/troubleshooting.md
+      - References: base/references.md
+  - Embedding Model:
+      - Overview: embedding_model/index.md
+      - Use Case: embedding_model/use_case.md
+      - Generating Embeddings: embedding_model/generating_embeddings.md
+      - Semantic Search: embedding_model/semantic_search.md
+      - Clustering and Similarity: embedding_model/clustering_similarity.md
+      - Integration with Vector Databases: embedding_model/vector_databases.md
+      - Fine-Tuning for Custom Embeddings: embedding_model/fine_tuning.md
+      - Performance Benchmarks: embedding_model/benchmarks.md
+      - Industry Applications:
+          - Finance: embedding_model/industry/finance.md
+          - Healthcare: embedding_model/industry/healthcare.md
+          - Science: embedding_model/industry/science.md
+          - E-commerce: embedding_model/industry/ecommerce.md
+      - Advanced Topics:
+          - Model Architecture: embedding_model/advanced/model_architecture.md
+          - Attention Mechanisms: embedding_model/advanced/attention_mechanisms.md
+          - Embedding Dimensions: embedding_model/advanced/embedding_dimensions.md
+          - Hardware Optimization: embedding_model/advanced/hardware_optimization.md
+          - Custom Tokenizer: embedding_model/advanced/custom_tokenizer.md
+          - Embedding Visualization: embedding_model/advanced/embedding_visualization.md
+          - Training Pipeline: embedding_model/advanced/training_pipeline.md
+          - Error Analysis: embedding_model/advanced/error_analysis.md
+      - Examples and Tutorials:
+          - Quickstart Tutorial: embedding_model/examples/basic_tutorial.md
+          - Semantic Search Demo: embedding_model/examples/semantic_search_demo.md
+          - Clustering Tutorial: embedding_model/examples/clustering_tutorial.md
+          - Fine-Tuning Demo: embedding_model/examples/fine_tuning_demo.md
+          - Domain Adaptation: embedding_model/examples/domain_adaptation.md
+          - Embedding Visualizer Demo: embedding_model/examples/embedding_visualizer_demo.md
+      - Limitations and Considerations: embedding_model/limitations.md
+      - References and Resources: embedding_model/references.md
+  - Installation: installation.md
+  - Tutorials:
+      - Training ModernBERT: tutorials/training.md
+      - Running Inference: tutorials/inference.md
+  - API Reference: api.md
+  - Preferences: preferences.md
 
 markdown_extensions:
-  - pymdownx.highlight:
-      anchor_linenums: true
-  - pymdownx.inlinehilite
-  - pymdownx.snippets
-  - pymdownx.superfences
+  - toc:
+      permalink: true
+  - tables
   - admonition
+  - codehilite:
+      guess_lang: false
   - pymdownx.details
-  - pymdownx.tabbed:
-      alternate_style: true
+  - pymdownx.superfences
+
+plugins:
+  - search
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/yourusername/yourrepository
+    - icon: fontawesome/brands/linkedin
+      link: https://linkedin.com/in/yourprofile
