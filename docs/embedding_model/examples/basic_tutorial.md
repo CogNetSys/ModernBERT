@@ -10,7 +10,7 @@ Before you begin, make sure you have the following installed:
 
 -   Python 3.7 or higher
 -   PyTorch 1.13.0 or higher
--   Hugging Face Transformers 4.26.0 or higher
+-   Hugging Face Transformers 4.28.0 or higher
 -   NumPy
 
 You can install the required packages using pip:
@@ -19,9 +19,15 @@ You can install the required packages using pip:
 pip install torch transformers numpy
 ```
 
+Then you must upgrade transformers to use the latest version 4.28+:
+
+```bash
+pip install --upgrade transformers
+```
+
 ---
 
-###  1: Load the Model and Tokenizer
+## Step 1: Load the Model and Tokenizer
 
 First, import the necessary classes from the `transformers` library and load the pre-trained `lightonai/modernbert-embed-large` model and its corresponding tokenizer.
 
@@ -44,7 +50,7 @@ model.to(device)
 
 ---
 
-###  2: Prepare Input Text
+## Step 2: Prepare Input Text
 
 Next, prepare the input text you want to generate embeddings for. For this example, we'll use a list of sentences.
 
@@ -60,7 +66,7 @@ sentences = [
 
 ---
 
-###  3: Tokenize the Input
+## Step 3: Tokenize the Input
 
 Use the tokenizer to convert the input sentences into a format that the model can understand. This involves splitting the text into tokens, adding special tokens (like `[CLS]` and `[SEP]`), mapping tokens to their corresponding IDs, and creating an attention mask.
 
@@ -76,7 +82,7 @@ inputs = {k: v.to(device) for k, v in inputs.items()}  # Move inputs to GPU
 
 ---
 
-###  4: Generate Embeddings
+## Step 4: Generate Embeddings
 
 Now, pass the tokenized inputs to the model to generate the embeddings. We'll use the embedding of the `[CLS]` token as the sentence-level representation.
 
@@ -95,17 +101,17 @@ print(f"Shape of sentence embeddings: {sentence_embeddings.shape}")
 
 ---
 
-### 5: Calculate Sentence Similarity
+## Step 5: Calculate Sentence Similarity
 
 A common use case for sentence embeddings is to measure the similarity between sentences. We can use cosine similarity for this purpose.
 
 ```python
 from sklearn.metrics.pairwise import cosine_similarity
 
-# Calculate cosine similarity between the first sentence and the rest
+# Move embeddings to CPU and calculate cosine similarity
 similarity_scores = cosine_similarity(
-    sentence_embeddings[0].reshape(1, -1),  # Reshape to 2D array
-    sentence_embeddings[1:]
+    sentence_embeddings[0].cpu().reshape(1, -1),  # Move to CPU and reshape to 2D array
+    sentence_embeddings[1:].cpu()  # Move the rest to CPU
 )
 
 print("Similarity scores with the first sentence:")
@@ -114,21 +120,14 @@ for i, score in enumerate(similarity_scores[0]):
 ```
 
 -   `cosine_similarity` computes the cosine similarity between pairs of vectors.
--   We reshape the embedding of the first sentence to a 2D array because `cosine_similarity` expects 2D arrays as input.
-
----
-
-## 📊 Visualize Embeddings (Optional)
-
-While not covered in this quickstart, you can use dimensionality reduction techniques like PCA or t-SNE to visualize the embeddings in 2D or 3D space. This can provide insights into how the model represents different sentences and how they relate to each other. Check the "Embedding Visualization" advanced document for more on that.
+-   We move the embeddings to CPU before calculating the cosine similarity because `sklearn` functions typically work with NumPy arrays, which are processed on the CPU.
 
 ---
 
 ## 📊 Diagram: Sentence Embedding Generation with ModernBERT
 
-![Sentence Embedding Generation](../images/mermaid-diagram-2025-01-20-170241.svg)
+![Sentence Embedding Generation](../images/mermaid-diagram-2025-01-20-185321.svg)
 *Figure 1: Overview of the process for generating sentence embeddings using ModernBERT, from tokenizing the input sentences to extracting the `[CLS]` token embedding as the sentence representation.*
-
 ---
 
 ## 🏁 Conclusion
